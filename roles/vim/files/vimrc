@@ -1,0 +1,78 @@
+set background=dark
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax on
+set autoindent
+set smartindent
+set ic
+set backspace=2
+let mapleader = "\<Space>"
+set hlsearch
+
+" Set laststatus so airline always shows up
+set laststatus=2
+
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_WinWidth = 50
+:map <F4> :TlistToggle<cr>
+
+autocmd FileType make setlocal noexpandtab
+au BufNewFile,BufRead *.mk set filetype=make
+
+" Enable 256 color mode
+set t_Co=256
+
+" Plug packages
+call plug#begin('~/.vim/plugged')
+
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'altercation/vim-colors-solarized'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Markdown syntax suppoer
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+" Add plugins to &runtimepath
+call plug#end()
+
+"
+" Color Scheme
+"
+syntax enable
+set background=dark
+colorscheme solarized
+
+"
+" Fuzzy Find
+"
+nnoremap <Leader>o :Files<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>r :FilesMru<cr>
+let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+
+"
+" Airline
+"
+let g:airline_powerline_fonts = 1
+
+"
+" NERDTree
+"
+let NERDTreeIgnore = ['\.pyc$']
+
+
+let g:vim_markdown_folding_disabled = 1
+
