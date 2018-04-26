@@ -6,3 +6,4 @@
   hosts: local
   roles:
     - vim
+    - tmux
