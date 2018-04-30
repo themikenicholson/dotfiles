@@ -18,8 +18,12 @@ let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
 :map <F4> :TlistToggle<cr>
 
+" Makefile specific
 autocmd FileType make setlocal noexpandtab
 au BufNewFile,BufRead *.mk set filetype=make
+
+" Php specific
+autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable 256 color mode
 set t_Co=256
